@@ -51,5 +51,28 @@ export const heroSchema: SchemaTypeDefinition = {
         hotspot: true,
       },
     },
+    {
+      name: 'blockInfo',
+      title: 'lock Info',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'infoBlockTitle',
+              title: 'Info Block Title',
+              type: 'string',
+            },
+            {
+              name: 'infoBlockSubtitle',
+              title: 'Info Block Subtitle',
+              type: 'string',
+            },
+          ],
+        },
+      ],
+    },
+
   ],
 };
