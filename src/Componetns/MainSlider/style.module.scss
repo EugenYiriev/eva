@@ -1,0 +1,51 @@
+.mainSlider {
+    float: left;
+    width: 100%;
+    margin-top: 74px;
+}
+
+.leftTitle {
+    text-align: left;
+    float: left;
+}
+
+.rightTitle {
+    text-align: right;
+    color: #D7D7D7;
+    font-weight: 500;
+    line-height: 72px;
+    margin-right: 22px;
+}
+
+.rightTitle::after {
+    content: '';
+    position: absolute;
+    transform: translateY(-50%);
+    background-image: url('/images/arrowright24.svg');
+    background-size: 24px;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    margin-top: 36px;
+}
+
+.slider {
+    width: 100%;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+}
+
+.expandedImage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+  }

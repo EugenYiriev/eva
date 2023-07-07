@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './infoblock.module.scss';
+import styles from './style.module.scss';
 
 export const InfoBlock = ({ title, text, className  }) => {
   return (

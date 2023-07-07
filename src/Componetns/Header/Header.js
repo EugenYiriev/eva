@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import client from '../../../sanity/lib/client';
-import styles from './header.module.scss';
+import styles from './style.module.scss';
 
 export const Header = () => {
     const [headerData, setHeaderData] = useState(null);

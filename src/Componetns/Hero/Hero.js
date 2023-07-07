@@ -2,10 +2,10 @@
 import imageUrlBuilder from '@sanity/image-url';
 import React, { useEffect, useState } from 'react';
 import client from '../../../sanity/lib/client';
-import styles from './hero.module.scss';
+import styles from './style.module.scss';
 import { Title } from '../Tags/Title/Title';
-import { ListItem } from '../Tags/ListItem/ListItem';
-import { Button } from '../Tags/Button/Button';
+import { ListItem } from './ListItem/ListItem';
+import { Button } from './Button/Button';
 import { InfoBlock } from './InfoBlock/InfoBlock';
 import Image from 'next/image';
 
@@ -32,7 +32,7 @@ export const Hero = () => {
         setImageUrl(builder.image(image).url());
     };
 
-    const imageUrls = ['/images/Group1.png', '/images/Group2.png'];
+    const iconUrls = ['/images/Group1.png', '/images/Group2.png'];
 
     return (
         <div className={styles.hero}>
@@ -42,7 +42,7 @@ export const Hero = () => {
                         <Title text={dataHero.title} />
                         <h3 className={styles.subheading}>{dataHero.subtitle}</h3>
                         
-                        <ListItem items={dataHero.listItems} listStyle={styles.listStyle} imageUrls={imageUrls} /> 
+                        <ListItem items={dataHero.listItems} listStyle={styles.listStyle} iconUrls={iconUrls} /> 
 
                         <div className={styles.buttons}>
                             {dataHero.buttons.map((button, index) => (
