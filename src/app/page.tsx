@@ -5,6 +5,7 @@ import { MainSlider } from '../Componetns/MainSlider/MainSlider'
 import { OurRugs } from '../Componetns/OurRugs/OurRugs'
 import { Comparisons } from '../Componetns/Comparisons/Comparisons'
 import { Reviews } from '../Componetns/Reviews/Reviews'
+import { VideoReviews } from '../Componetns/VideoReviews/VideoReviews'
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <OurRugs />
         <Comparisons />
         <Reviews />
+        <VideoReviews />
 
       </div>
     </main>

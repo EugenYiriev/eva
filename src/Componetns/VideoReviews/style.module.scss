@@ -1,0 +1,17 @@
+.videoReviews {
+    float: left;
+    margin-top: 110px;
+    width: 100%;
+}
+
+.videoContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .videoItem {
+    flex: 0 0 45%;
+    margin: 0 16px;
+  }
+  
