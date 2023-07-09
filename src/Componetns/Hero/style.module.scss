@@ -35,6 +35,7 @@
     backdrop-filter: blur(555px);
     float: right;
     margin-top: 140px;
+    border: 1px solid #9B51E0;
 }
 
 .blockInfo {
@@ -71,4 +72,26 @@
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;
-  }
+}
+
+.circlePurper {
+    position: absolute;
+    width: 123px;
+    height: 123px;
+    left: -10%;
+    top: -10%;
+    background: #FB37FF;
+    z-index: -1;
+    filter: blur(100px);
+}
+
+.circleBlue {
+    position: absolute;
+    width: 123px;
+    height: 123px;
+    left: 84%;
+    top: 90%;
+    z-index: -1;
+    background: #18B2DE;
+    filter: blur(100px);
+}

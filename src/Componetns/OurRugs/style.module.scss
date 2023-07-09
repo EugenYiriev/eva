@@ -1,0 +1,25 @@
+.ourRugs {
+    float: left;
+    margin-top: 160px;
+}
+
+.rugContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.rugBlock {
+    width: 25%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.rectangle {
+    border-radius: 10px;
+    background: var(--linear-purple-blue-style, linear-gradient(126deg, #9B51E0 0%, #3081ED 100%));
+    filter: blur(100px);
+    width: 1292px;
+    height: 58px;
+    position: relative;
+    top: 470px;
+}

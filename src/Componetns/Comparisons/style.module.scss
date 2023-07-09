@@ -1,0 +1,15 @@
+.comparisons {
+    float: left;
+    margin-top: 96px;
+}
+
+.backgroundImg {
+    position: relative;
+}
+
+.backgroundImg img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(115%, -210%);
+}

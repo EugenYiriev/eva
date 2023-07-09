@@ -15,7 +15,7 @@ export const MainSlider = () => {
   const [expandedImageUrl, setExpandedImageUrl] = useState('');
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,

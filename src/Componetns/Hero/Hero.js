@@ -32,7 +32,7 @@ export const Hero = () => {
         setImageUrl(builder.image(image).url());
     };
 
-    const iconUrls = ['/images/Group1.png', '/images/Group2.png'];
+    const iconUrls = ['/images/Group1.png', '/images/Group2.png']; //? 
 
     return (
         <div className={styles.hero}>
@@ -41,8 +41,8 @@ export const Hero = () => {
                     <>
                         <Title text={dataHero.title} />
                         <h3 className={styles.subheading}>{dataHero.subtitle}</h3>
-                        
-                        <ListItem items={dataHero.listItems} listStyle={styles.listStyle} iconUrls={iconUrls} /> 
+
+                        <ListItem items={dataHero.listItems} listStyle={styles.listStyle} iconUrls={iconUrls} />
 
                         <div className={styles.buttons}>
                             {dataHero.buttons.map((button, index) => (
@@ -59,6 +59,9 @@ export const Hero = () => {
             </div>
 
             <div className={styles.heroRight}>
+                <div className={styles.circlePurper}></div>
+                <div className={styles.circleBlue}></div>
+
                 {imageUrl && (
                     <Image src={imageUrl} width={447} height={448} alt="LeftBlockTime" />
                 )}

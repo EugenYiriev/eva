@@ -1,6 +1,6 @@
 import { SchemaTypeDefinition } from 'sanity';
 
-export const mainSlider: SchemaTypeDefinition = {
+export const mainSliderSchema: SchemaTypeDefinition = {
   name: 'mainSlider',
   title: 'Main slider',
   type: 'document',
