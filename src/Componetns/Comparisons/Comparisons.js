@@ -7,6 +7,7 @@ import imageUrlBuilder from '@sanity/image-url';
 import Image from 'next/image';
 import styles from './style.module.scss';
 import { VideoPlayer } from '../VideoPlayer/VideoPlayer';
+import { Comparison } from './Comparison/Comparison';
 
 export const Comparisons = () => {
   const [title, setTitle] = useState('');
@@ -52,24 +53,40 @@ export const Comparisons = () => {
         <Subtitle text={title} />
         <AdditionalTitle text={subtitle} />
 
-        {/* {imageUrl && (
-        <Image src={imageUrl} width={447} height={448} alt="LeftBlockTime" />
-      )} */}
-
-        <VideoPlayer videoId={videoLink} posterImageUrl={imageUrl} width={881} height={451} />
-
         <div className={styles.backgroundImg}>
           <Image
             src={'/images/group-130.svg'}
             width={500}
             height={370}
             alt=""
-            className={styles.rugImage}
           />
         </div>
+
+        <VideoPlayer videoId={videoLink} posterImageUrl={imageUrl} width={811} height={451} /> 
       </div>
 
+      {listMinus.map((item, index) => (
+        <Comparison
+          key={index}
+          title={item.title}
+          image={item.image ? builder.image(item.image).url() : ''}
+          items={item.list}
+          customStyle={styles.customStyleliMinus}
+        />
+      ))}
+
+      {listPlus.map((item, index) => (
+        <Comparison
+          key={index}
+          title={item.title}
+          image={item.image ? builder.image(item.image).url() : ''}
+          items={item.list}
+          customStyle={styles.customStyleLiPlus}
+        />
+      ))}
 
     </>
   );
 };
+
+

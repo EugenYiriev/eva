@@ -47,9 +47,9 @@ export const VideoPlayer = ({ videoId, posterImageUrl, width, height }) => {
           <Image src={posterImageUrl} width={width} height={height} alt="Video Poster" />
         )}
       </div>
-      <div style={{ flex: 1 }}>
+      {/* <div style={{ flex: 1 }}>
         <div id="youtube-player" />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 .comparisons {
     float: left;
-    margin-top: 96px;
+    margin-top: 110px;
 }
 
 .backgroundImg {
@@ -11,5 +11,33 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(115%, -210%);
+    transform: translate(115%, 16%);
+}
+
+.customStyleLiPlus span {
+    background: linear-gradient(103.91deg, #9b51e0 19.72%, rgba(48, 129, 237, 0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.customStyleliMinus li::before {
+    content: "";
+    position: absolute;
+    background-image: url(/images/check-mark-button.svg);
+    background-size: 28px;
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 28px;
+    margin-left: -34px;
+}
+
+.customStyleLiPlus li::before {
+    content: "";
+    position: absolute;
+    background-image: url(/images/check-mark-button-plus.svg);
+    background-size: 28px;
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 28px;
+    margin-left: -34px;
 }
