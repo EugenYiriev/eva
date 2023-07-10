@@ -17,6 +17,10 @@
     justify-content: space-between;
     margin-bottom: 20px;
   }
+
+  .elementRow:nth-child(2) {
+    margin-top: 134px;
+  }
   
   .element {
     flex: 1;
