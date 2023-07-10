@@ -46,6 +46,7 @@ export function MakeOrders() {
                             <ElementOrder
                                 title={item.title}
                                 imageUrl={urlFor(item.image).url()}
+                                addCusClass={index}
                             />
                         </div>
                     ))}
@@ -57,6 +58,7 @@ export function MakeOrders() {
                             <ElementOrder
                                 title={item.title}
                                 imageUrl={urlFor(item.image).url()}
+                                addCusClass={index}
                             />
                         </div>
                     ))}
