@@ -1,0 +1,25 @@
+.makeOrder {
+    width: 100%;
+    float: left;
+    margin-top: 155px;
+  }
+  
+  .makeOrderTitle {
+    text-align: center;
+  }
+
+  .blockElements {
+    margin-top: 40px;
+  }
+  
+  .elementRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .element {
+    flex: 1;
+    text-align: center;
+  }
+  

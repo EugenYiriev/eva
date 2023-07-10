@@ -3,7 +3,7 @@ import styles from './style.module.scss';
 
 export const AdditionalTitle = ({ text }) => {
   return (
-      <h2 className={styles.additionalTitle}>{text}</h2>
+      <h3 className={styles.additionalTitle}>{text}</h3>
   );
 };
 

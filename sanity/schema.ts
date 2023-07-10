@@ -6,8 +6,9 @@ import { ourRugsSchema } from './ourRugsSchema';
 import { comparisonsSchema } from './comparisonsSchema';
 import { reviewsSchema } from './reviewsSchema';
 import { reviewsVideoSchema } from './reviewsVideoSchema'
+import { makeOrderSchema } from './makeOrderSchema'
 
 export const schema: { types: SchemaTypeDefinition[] } = { 
-  types: [headerSchema, heroSchema, mainSliderSchema, ourRugsSchema, comparisonsSchema, reviewsSchema, reviewsVideoSchema],
+  types: [headerSchema, heroSchema, mainSliderSchema, ourRugsSchema, comparisonsSchema, reviewsSchema, reviewsVideoSchema, makeOrderSchema],
 };
  

@@ -6,6 +6,7 @@ import { OurRugs } from '../Componetns/OurRugs/OurRugs'
 import { Comparisons } from '../Componetns/Comparisons/Comparisons'
 import { Reviews } from '../Componetns/Reviews/Reviews'
 import { VideoReviews } from '../Componetns/VideoReviews/VideoReviews'
+import { MakeOrders } from '../Componetns/MakeOrders/MakeOrders'
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <Comparisons />
         <Reviews />
         <VideoReviews />
+        <MakeOrders />
 
       </div>
     </main>
