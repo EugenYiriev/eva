@@ -1,55 +1,34 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './style.module.scss';
 
 export const VideoPlayer = ({ videoId, posterImageUrl, width, height }) => {
-  const playerRef = useRef(null);
+  const [showVideo, setShowVideo] = useState(false);
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://www.youtube.com/iframe_api';
-    script.async = true;
-    document.body.appendChild(script);
-
-    window.onYouTubeIframeAPIReady = () => {
-      playerRef.current = new window.YT.Player('youtube-player', {
-        videoId: videoId,
-        playerVars: {
-          controls: 1,
-          playsinline: 1,
-          modestbranding: 1,
-          rel: 0,
-          showinfo: 0,
-        },
-        events: {
-          onReady: onPlayerReady,
-        },
-      });
-    };
-
-    return () => {
-      script.remove();
-      window.onYouTubeIframeAPIReady = undefined;
-      window.YT = undefined;
-    };
-  }, [videoId]);
-
-  const onPlayerReady = (event) => {
-    event.target.mute();
-    event.target.cueVideoById(videoId);
-    event.target.playVideo();
+  const handlePlay = () => {
+    setShowVideo(true);
   };
 
   return (
-    <div className={styles.videoContainer}>
-      <div>
-        {posterImageUrl && (
+    <div className={styles.videoContainer} >
+      {!showVideo && (
+        <button onClick={handlePlay} className={styles.posterImage} style={{height: height}}>
           <Image src={posterImageUrl} width={width} height={height} alt="Video Poster" />
-        )}
-      </div>
-      {/* <div style={{ flex: 1 }}>
-        <div id="youtube-player" />
-      </div> */}
+          <span className={styles.playButton}></span>
+        </button>
+      )}
+      {showVideo && (
+        <div className={styles.videoWrapper}>
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`}
+            width={width}
+            height={height}
+            frameBorder="0"
+            allowFullScreen
+            title="YouTube Video"
+          ></iframe>
+        </div>
+      )}
     </div>
   );
 };
