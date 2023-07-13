@@ -11,13 +11,7 @@ export const VideoPlayer = ({ videoId, posterImageUrl, width, height }) => {
 
   return (
     <div className={styles.videoContainer} >
-      {!showVideo && (
-        <button onClick={handlePlay} className={styles.posterImage} style={{height: height}}>
-          <Image src={posterImageUrl} width={width} height={height} alt="Video Poster" />
-          <span className={styles.playButton}></span>
-        </button>
-      )}
-      {showVideo && (
+      {showVideo ? (
         <div className={styles.videoWrapper}>
           <iframe
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`}
@@ -28,6 +22,11 @@ export const VideoPlayer = ({ videoId, posterImageUrl, width, height }) => {
             title="YouTube Video"
           ></iframe>
         </div>
+      ) : (
+        <button onClick={handlePlay} className={styles.posterImage} style={{ height: height }}>
+          <Image src={posterImageUrl} width={width} height={height} alt="Video Poster" />
+          <span className={styles.playButton}></span>
+        </button>
       )}
     </div>
   );
