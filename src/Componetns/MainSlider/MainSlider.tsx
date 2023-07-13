@@ -22,6 +22,8 @@ export const MainSlider: React.FC<MainSliderProps> = () => {
   const [isImageExpanded, setIsImageExpanded] = useState<boolean>(false);
   const [expandedImageUrl, setExpandedImageUrl] = useState<string>('');
 
+  //TODO: Move slideSettings out of component. Otherwise it will be recreated on every render
+  // Better to move it in separate file and import it
   const settings = {
     dots: false,
     infinite: true,

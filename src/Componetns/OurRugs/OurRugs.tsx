@@ -15,6 +15,8 @@ interface RugData {
 }
 
 export const OurRugs: React.FC<OurRugsProps> = () => {
+  //TODO: Use only one state/setState for title, subtitle and rugList like
+  // const [ourRugs, setOurRugs] = useState<{title: string, subtitle: string, rugList: RugData[]}>({title: '', subtitle: '', rugList: []})
   const [title, setTitle] = useState<string>('');
   const [subtitle, setSubtitle] = useState<string>('');
   const [rugList, setRugList] = useState<RugData[]>([]);
@@ -45,6 +47,7 @@ export const OurRugs: React.FC<OurRugsProps> = () => {
 
   return (
     <div className={styles.ourRugs}>
+      {/* TODO: Use ::before or ::after pseudo-element instead of div for rectangle */}
       <div className={styles.rectangle}></div>
       <Subtitle text={title} />
       <AdditionalTitle text={subtitle} />
