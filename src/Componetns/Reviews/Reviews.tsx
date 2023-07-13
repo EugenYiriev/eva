@@ -7,6 +7,8 @@ import client from '../../../sanity/lib/client';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { sliderSettings } from './sliderSettings';
+
 
 interface ReviewsProps {}
 
@@ -15,37 +17,6 @@ export const Reviews: React.FC<ReviewsProps> = () => {
   const [imageUrls, setImageUrls] = useState<string[]>([]);
   const [isImageExpanded, setIsImageExpanded] = useState<boolean>(false);
   const [expandedImageUrl, setExpandedImageUrl] = useState<string>('');
-
-  const slideSettings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -92,7 +63,7 @@ export const Reviews: React.FC<ReviewsProps> = () => {
     <div className={styles.reviews}>
       <Subtitle text={title} />
       <div className={styles.sliderContainer}>
-        <Slider {...slideSettings} className={styles.slider}>
+        <Slider {...sliderSettings} className={styles.slider}>
           {imageUrls.map((url, index) => (
             <div key={index}>
               <img

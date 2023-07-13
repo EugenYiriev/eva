@@ -2,6 +2,19 @@
     float: left;
     margin-top: 100px;
     width: 100%;
+    position: relative;
+}
+
+.ourRugs::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-radius: 10px;
+    background: var(--linear-purple-blue-style, linear-gradient(126deg, #9B51E0 0%, #3081ED 100%));
+    filter: blur(100px);
+    width: 1292px;
+    height: 58px;
 }
 
 .rugContainer {
@@ -15,12 +28,3 @@
     padding: 10px;
 }
 
-.rectangle {
-    border-radius: 10px;
-    background: var(--linear-purple-blue-style, linear-gradient(126deg, #9B51E0 0%, #3081ED 100%));
-    filter: blur(100px);
-    width: 1292px;
-    height: 58px;
-    position: relative;
-    top: 470px;
-}

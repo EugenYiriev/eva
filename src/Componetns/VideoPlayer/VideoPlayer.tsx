@@ -24,7 +24,6 @@ export const VideoPlayer = ({ videoId, posterImageUrl, width, height }: VideoPla
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`}
             width={width}
             height={height}
-            frameBorder="0"
             allowFullScreen
             title="YouTube Video"
           ></iframe>

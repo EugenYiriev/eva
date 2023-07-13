@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { Component } from 'react';
 import client from '../../../sanity/lib/client';
 import styles from './style.module.scss';
 
@@ -9,34 +9,41 @@ interface HeaderData {
   phoneNumber: string;
 }
 
-export const Header: React.FC = () => {
-  const [headerData, setHeaderData] = useState<HeaderData | null>(null);
+export class Header extends Component<{}, HeaderData | null> {
+  constructor(props: {}) {
+    super(props);
+    this.state = null;
+  }
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await client.fetch('*[_type == "header"] | order(orderings)');
-        setHeaderData(response[0]);
-      } catch (error) {
-        console.error('Error:', error);
-      }
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  async fetchData() {
+    try {
+      const response = await client.fetch('*[_type == "header"] | order(orderings)');
+      this.setState({ ...response[0] });
+    } catch (error) {
+      console.error('Error:', error);
     }
+  }
 
-    fetchData();
-  }, []);
+  render() {
+    const { siteName, phoneLink, phoneNumber } = this.state || {};
 
-  return (
-    <header className={styles.header}>
-      {headerData && (
-        <>
-          <div className={styles.nameWeb}>{headerData.siteName}</div>
-          <div className={styles.phone}>
-            <a href={`tel:${headerData.phoneLink}`}>
-              <span>{headerData.phoneNumber}</span>
-            </a>
-          </div>
-        </>
-      )}
-    </header>
-  );
-};
+    return (
+      <header className={styles.header}>
+        {siteName && (
+          <>
+            <div className={styles.nameWeb}>{siteName}</div>
+            <div className={styles.phone}>
+              <a href={`tel:${phoneLink}`}>
+                <span>{phoneNumber}</span>
+              </a>
+            </div>
+          </>
+        )}
+      </header>
+    );
+  }
+}

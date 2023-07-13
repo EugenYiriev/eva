@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 import { useState, useEffect } from 'react';
 import { Subtitle } from '../Tags/SubTitle/SubTitle';
 import { AdditionalTitle } from '../Tags/AdditionalTitle/AdditionalTitle';
@@ -6,7 +6,7 @@ import { Rug } from './Rug/Rug';
 import client from '../../../sanity/lib/client';
 import styles from './style.module.scss';
 
-interface OurRugsProps {}
+interface OurRugsProps { }
 
 interface RugData {
   title: string;
@@ -14,10 +14,14 @@ interface RugData {
   imageUrl: string;
 }
 
+type OurRugsState = {
+  title: string;
+  subtitle: string;
+  rugList: RugData[];
+};
+
 export const OurRugs: React.FC<OurRugsProps> = () => {
-  const [title, setTitle] = useState<string>('');
-  const [subtitle, setSubtitle] = useState<string>('');
-  const [rugList, setRugList] = useState<RugData[]>([]);
+  const [ourRugs, setOurRugs] = useState<OurRugsState>({ title: '', subtitle: '', rugList: [] });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,9 +36,11 @@ export const OurRugs: React.FC<OurRugsProps> = () => {
           }
         }`);
 
-        setTitle(response.title);
-        setSubtitle(response.subtitle);
-        setRugList(response.rugList);
+        setOurRugs({
+          title: response.title,
+          subtitle: response.subtitle,
+          rugList: response.rugList
+        });
       } catch (error) {
         console.error('Error fetching data from Sanity:', error);
       }
@@ -45,18 +51,12 @@ export const OurRugs: React.FC<OurRugsProps> = () => {
 
   return (
     <div className={styles.ourRugs}>
-      <div className={styles.rectangle}></div>
-      <Subtitle text={title} />
-      <AdditionalTitle text={subtitle} />
+      <Subtitle text={ourRugs.title} />
+      <AdditionalTitle text={ourRugs.subtitle} />
       <div className={styles.rugContainer}>
-        {rugList.map((rug, i) => (
+        {ourRugs.rugList.map((rug, i) => (
           <div key={i} className={styles.rugBlock}>
-            <Rug
-              key={i}
-              title={rug.title}
-              text={rug.subtitle}
-              imageUrl={rug.imageUrl}
-            />
+            <Rug key={i} title={rug.title} text={rug.subtitle} imageUrl={rug.imageUrl} />
           </div>
         ))}
       </div>

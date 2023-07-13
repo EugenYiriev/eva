@@ -14,15 +14,16 @@ interface Video {
 interface VideoReviewsProps {}
 
 export const VideoReviews: React.FC<VideoReviewsProps> = () => {
-  const [videos, setVideos] = useState<Video[]>([]);
-  const [title, setTitle] = useState<string>('');
+  const [videoReviews, setVideoReviews] = useState<{ title: string; videos: Video[] }>({
+    title: '',
+    videos: [],
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await client.fetch('*[_type == "reviewsVideo"]');
-        setVideos(response[0].videos);
-        setTitle(response[0].title);
+        setVideoReviews({ title: response[0].title, videos: response[0].videos });
       } catch (error) {
         console.error('Error:', error);
       }
@@ -35,19 +36,14 @@ export const VideoReviews: React.FC<VideoReviewsProps> = () => {
 
   return (
     <div className={styles.videoReviews}>
-      <Subtitle text={title} />
+      <Subtitle text={videoReviews.title} />
       <div className={styles.videoContainer}>
-        {videos.map((video, index) => {
+        {videoReviews.videos.map((video, index) => {
           const imageUrl = video.backgroundImage ? builder.image(video.backgroundImage).url() : '';
 
           return (
             <div key={index} className={styles.videoItem}>
-              <VideoPlayer
-                videoId={video.videoLink}
-                posterImageUrl={imageUrl}
-                width={606}
-                height={332}
-              />
+              <VideoPlayer videoId={video.videoLink} posterImageUrl={imageUrl} width={606} height={332} />
             </div>
           );
         })}
