@@ -8,6 +8,7 @@ interface ElementOrderProps {
 }
 
 export const ElementOrder: React.FC<ElementOrderProps> = ({ title, imageUrl, addCusClass }) => {
+  //TODO: Remove infoClass. I don't see any reason to use it
   const infoClass = `in-${addCusClass}`;
 
   return (
