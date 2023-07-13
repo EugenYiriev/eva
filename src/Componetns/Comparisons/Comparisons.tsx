@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Subtitle } from '../Tags/SubTitle/SubTitle';
 import { AdditionalTitle } from '../Tags/AdditionalTitle/AdditionalTitle';
 import client from '../../../sanity/lib/client';
@@ -9,13 +9,23 @@ import styles from './style.module.scss';
 import { VideoPlayer } from '../VideoPlayer/VideoPlayer';
 import { Comparison } from './Comparison/Comparison';
 
-export const Comparisons = () => {
-  const [title, setTitle] = useState('');
-  const [subtitle, setSubtitle] = useState('');
-  const [image, setImage] = useState('');
-  const [videoLink, setVideoLink] = useState('');
-  const [listMinus, setListMinus] = useState([]);
-  const [listPlus, setListPlus] = useState([]);
+interface ComparisonItem {
+  title: string;
+  image: string;
+  list: string[];
+}
+
+interface ComparisonsData {
+  title: string;
+  subtitle: string;
+  image: string;
+  videoLink: string;
+  listMinus: ComparisonItem[];
+  listPlus: ComparisonItem[];
+}
+
+export const Comparisons: React.FC = () => {
+  const [data, setData] = useState<ComparisonsData | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,12 +39,7 @@ export const Comparisons = () => {
           listPlus
         }`);
 
-        setTitle(response.title);
-        setSubtitle(response.subtitle);
-        setImage(response.image);
-        setVideoLink(response.videoLink);
-        setListMinus(response.listMinus);
-        setListPlus(response.listPlus);
+        setData(response);
       } catch (error) {
         console.error('Error fetching data from Sanity:', error);
       }
@@ -44,6 +49,12 @@ export const Comparisons = () => {
   }, []);
 
   const builder = imageUrlBuilder(client);
+
+  if (!data) {
+    return null;
+  }
+
+  const { title, subtitle, image, videoLink, listMinus, listPlus } = data;
 
   const imageUrl = image ? builder.image(image).url() : '';
 
@@ -84,9 +95,6 @@ export const Comparisons = () => {
           customStyle={styles.customStyleLiPlus}
         />
       ))}
-
     </>
   );
 };
-
-

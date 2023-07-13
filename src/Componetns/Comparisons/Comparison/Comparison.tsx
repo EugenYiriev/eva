@@ -1,6 +1,14 @@
+import React from 'react';
 import styles from './style.module.scss';
 
-export const Comparison = ({ title, image, items, customStyle }) => {
+interface ComparisonProps {
+  title: string;
+  image: string;
+  items: string[];
+  customStyle: string;
+}
+
+export const Comparison: React.FC<ComparisonProps> = ({ title, image, items, customStyle }) => {
   const firstWord = title.split(' ')[0]; 
 
   return (

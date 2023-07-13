@@ -8,11 +8,19 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-export const MainSlider = () => {
-  const [dataMainSlider, setMainSliderData] = useState(null);
-  const [imageUrls, setImageUrls] = useState([]);
-  const [isImageExpanded, setIsImageExpanded] = useState(false);
-  const [expandedImageUrl, setExpandedImageUrl] = useState('');
+interface MainSliderData {
+  leftTitle: string;
+  rightTitle: string;
+  imageGallery: string[];
+}
+
+interface MainSliderProps {}
+
+export const MainSlider: React.FC<MainSliderProps> = () => {
+  const [dataMainSlider, setMainSliderData] = useState<MainSliderData | null>(null);
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [isImageExpanded, setIsImageExpanded] = useState<boolean>(false);
+  const [expandedImageUrl, setExpandedImageUrl] = useState<string>('');
 
   const settings = {
     dots: false,
@@ -46,20 +54,20 @@ export const MainSlider = () => {
   };
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
-        const response = await client.fetch('*[_type == "mainSlider"]');
+        const response: MainSliderData[] = await client.fetch('*[_type == "mainSlider"]');
         setMainSliderData(response[0]);
         getImageUrls(response[0].imageGallery);
       } catch (error) {
         console.error('Error:', error);
       }
-    }
+    };
 
     fetchData();
   }, []);
 
-  const getImageUrls = async (imageGallery) => {
+  const getImageUrls = async (imageGallery: string[]) => {
     const builder = imageUrlBuilder(client);
 
     const urls = await Promise.all(
@@ -72,7 +80,7 @@ export const MainSlider = () => {
     setImageUrls(urls);
   };
 
-  const handleImageClick = (url) => {
+  const handleImageClick = (url: string) => {
     setIsImageExpanded(true);
     setExpandedImageUrl(url);
   };

@@ -1,21 +1,25 @@
 import styles from './style.module.scss';
 import Image from 'next/image';
 
-export const ElementOrder = ({ title, imageUrl, addCusClass }) => {
+interface ElementOrderProps {
+  title: string;
+  imageUrl: string;
+  addCusClass: string;
+}
 
-    const infoClass = `in-${addCusClass}`;
-    
-    return (
-        <div className={`${styles.elementInfo} ${styles[infoClass]}`}>
-        <Image
-          src={imageUrl}
-          width={60}
-          height={60}
-          alt=""
-          className={styles.elementImage}
-        />
-        <p className={styles.title}>{title}</p>
-      </div>
-    );
-  };
-  
+export const ElementOrder: React.FC<ElementOrderProps> = ({ title, imageUrl, addCusClass }) => {
+  const infoClass = `in-${addCusClass}`;
+
+  return (
+    <div className={`${styles.elementInfo} ${styles[infoClass]}`}>
+      <Image
+        src={imageUrl}
+        width={60}
+        height={60}
+        alt=""
+        className={styles.elementImage}
+      />
+      <p className={styles.title}>{title}</p>
+    </div>
+  );
+};

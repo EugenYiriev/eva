@@ -1,18 +1,20 @@
 "use client";
+import React, { useEffect, useState } from 'react';
 import styles from './style.module.scss';
 import { Subtitle } from '../Tags/SubTitle/SubTitle';
-import { useEffect, useState } from 'react';
 import imageUrlBuilder from '@sanity/image-url';
 import client from '../../../sanity/lib/client';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-export const Reviews = () => {
-  const [title, setTitle] = useState('');
-  const [imageUrls, setImageUrls] = useState([]);
-  const [isImageExpanded, setIsImageExpanded] = useState(false);
-  const [expandedImageUrl, setExpandedImageUrl] = useState('');
+interface ReviewsProps {}
+
+export const Reviews: React.FC<ReviewsProps> = () => {
+  const [title, setTitle] = useState<string>('');
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [isImageExpanded, setIsImageExpanded] = useState<boolean>(false);
+  const [expandedImageUrl, setExpandedImageUrl] = useState<string>('');
 
   const slideSettings = {
     dots: false,
@@ -63,7 +65,7 @@ export const Reviews = () => {
     fetchData();
   }, []);
 
-  const getImageUrls = async (imageGallery) => {
+  const getImageUrls = async (imageGallery: string[]) => {
     const builder = imageUrlBuilder(client);
 
     const urls = await Promise.all(
@@ -76,7 +78,7 @@ export const Reviews = () => {
     setImageUrls(urls);
   };
 
-  const handleImageClick = (url) => {
+  const handleImageClick = (url: string) => {
     setIsImageExpanded(true);
     setExpandedImageUrl(url);
   };

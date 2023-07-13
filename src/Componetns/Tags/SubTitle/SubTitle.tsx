@@ -1,9 +1,12 @@
 import React from 'react';
 import styles from './style.module.scss';
 
-export const Subtitle = ({ text }) => {
+interface SubtitleProps {
+  text: string;
+}
+
+export const Subtitle: React.FC<SubtitleProps> = ({ text }) => {
   return (
-      <h2 className={styles.subtitle}>{text}</h2>
+    <h2 className={styles.subtitle}>{text}</h2>
   );
 };
-

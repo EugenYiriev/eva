@@ -6,10 +6,18 @@ import { Rug } from './Rug/Rug';
 import client from '../../../sanity/lib/client';
 import styles from './style.module.scss';
 
-export const OurRugs = () => {
-  const [title, setTitle] = useState('');
-  const [subtitle, setSubtitle] = useState('');
-  const [rugList, setRugList] = useState([]);
+interface OurRugsProps {}
+
+interface RugData {
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+}
+
+export const OurRugs: React.FC<OurRugsProps> = () => {
+  const [title, setTitle] = useState<string>('');
+  const [subtitle, setSubtitle] = useState<string>('');
+  const [rugList, setRugList] = useState<RugData[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +60,6 @@ export const OurRugs = () => {
           </div>
         ))}
       </div>
-
     </div>
   );
 };

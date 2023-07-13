@@ -6,9 +6,16 @@ import { Subtitle } from '../Tags/SubTitle/SubTitle';
 import styles from './style.module.scss';
 import { VideoPlayer } from '../VideoPlayer/VideoPlayer';
 
-export const VideoReviews = () => {
-  const [videos, setVideos] = useState([]);
-  const [title, setTitle] = useState('');
+interface Video {
+  videoLink: string;
+  backgroundImage: string;
+}
+
+interface VideoReviewsProps {}
+
+export const VideoReviews: React.FC<VideoReviewsProps> = () => {
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [title, setTitle] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {

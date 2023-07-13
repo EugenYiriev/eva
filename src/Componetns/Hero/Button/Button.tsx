@@ -1,7 +1,13 @@
 import React from 'react';
 import styles from './style.module.scss';
 
-export const Button = ({ link, title, className }) => {
+interface ButtonProps {
+  link: string;
+  title: string;
+  className?: string;
+}
+
+export const Button: React.FC<ButtonProps> = ({ link, title, className }) => {
   return (
     <a href={link} className={`${styles.button} ${className}`}>
       {title}

@@ -2,11 +2,18 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './style.module.scss';
 
-export const VideoPlayer = ({ videoId, posterImageUrl, width, height }) => {
+interface VideoPlayerProps {
+  videoId: string;
+  posterImageUrl: string;
+  width: number;
+  height: number;
+}
+
+export const VideoPlayer = ({ videoId, posterImageUrl, width, height }: VideoPlayerProps) => {
   const [showVideo, setShowVideo] = useState(false);
 
   const handlePlay = () => {
-    setShowVideo(true);
+    setShowVideo(true); 
   };
 
   return (
