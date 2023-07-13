@@ -17,16 +17,3 @@
     line-height: 26px;
 }
 
-.in-0::after,
-.in-1::after {
-    content: '. . . . . . . . . . . . . . . . .';
-    white-space: nowrap;
-    position: absolute;
-    top: 10%;
-    font-size: 22px;
-    left: 140%;
-    transform: translate(-50%, -50%);
-    height: 5px;
-    color: rgba(196, 196, 196, 0.4);
-    border-radius: 50%;
-}
