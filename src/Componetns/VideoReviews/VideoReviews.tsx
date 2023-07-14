@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import client from '../../../sanity/lib/client';
 import imageUrlBuilder from '@sanity/image-url';
 import { Subtitle } from '../Tags/SubTitle/SubTitle';
-import styles from './style.module.scss';
 import { VideoPlayer } from '../VideoPlayer/VideoPlayer';
 
 interface Video {
@@ -11,7 +10,7 @@ interface Video {
   backgroundImage: string;
 }
 
-interface VideoReviewsProps {}
+interface VideoReviewsProps { }
 
 export const VideoReviews: React.FC<VideoReviewsProps> = () => {
   const [videoReviews, setVideoReviews] = useState<{ title: string; videos: Video[] }>({
@@ -35,14 +34,13 @@ export const VideoReviews: React.FC<VideoReviewsProps> = () => {
   const builder = imageUrlBuilder(client);
 
   return (
-    <div className={styles.videoReviews}>
+    <div className='float-left mt-28 w-full'>
       <Subtitle text={videoReviews.title} />
-      <div className={styles.videoContainer}>
+      <div className='flex justify-between flex-wrap'>
         {videoReviews.videos.map((video, index) => {
           const imageUrl = video.backgroundImage ? builder.image(video.backgroundImage).url() : '';
-
           return (
-            <div key={index} className={styles.videoItem}>
+            <div key={index} className='flex-[0_0_45%] mx-4 my-0'>
               <VideoPlayer videoId={video.videoLink} posterImageUrl={imageUrl} width={606} height={332} />
             </div>
           );

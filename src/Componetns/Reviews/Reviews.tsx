@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import styles from './style.module.scss';
 import { Subtitle } from '../Tags/SubTitle/SubTitle';
 import imageUrlBuilder from '@sanity/image-url';
 import client from '../../../sanity/lib/client';
@@ -9,8 +8,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { sliderSettings } from './sliderSettings';
 
-
-interface ReviewsProps {}
+interface ReviewsProps { }
 
 export const Reviews: React.FC<ReviewsProps> = () => {
   const [title, setTitle] = useState<string>('');
@@ -60,31 +58,26 @@ export const Reviews: React.FC<ReviewsProps> = () => {
   };
 
   return (
-    <div className={styles.reviews}>
+    <div className='float-left mt-28 w-full'>
       <Subtitle text={title} />
-      <div className={styles.sliderContainer}>
-        <Slider {...sliderSettings} className={styles.slider}>
-          {imageUrls.map((url, index) => (
-            <div key={index}>
-              <img
-                src={url}
-                alt={`Review Image ${index}`}
-                className={styles.image}
-                onClick={() => handleImageClick(url)}
-              />
-            </div>
-          ))}
-        </Slider>
-      </div>
+      <Slider {...sliderSettings} className='w-full mt-10'>
+        {imageUrls.map((url, index) => (
+          <div key={index}>
+            <img
+              src={url}
+              alt={`Review Image ${index}`}
+              className='w-full h-auto p-3.5'
+              onClick={() => handleImageClick(url)}
+            />
+          </div>
+        ))}
+      </Slider>
       {isImageExpanded && (
-        <div
-          className={styles.expandedImageContainer}
-          onClick={handleImageClose}
-        >
+        <div onClick={handleImageClose}>
           <img
             src={expandedImageUrl}
             alt="Expanded Image"
-            className={styles.expandedImage}
+            className='fixed top-0 left-0 w-full h-full object-contain bg-[#000000cc] z-50'
           />
         </div>
       )}

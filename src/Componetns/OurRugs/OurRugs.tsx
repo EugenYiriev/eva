@@ -4,7 +4,6 @@ import { Subtitle } from '../Tags/SubTitle/SubTitle';
 import { AdditionalTitle } from '../Tags/AdditionalTitle/AdditionalTitle';
 import { Rug } from './Rug/Rug';
 import client from '../../../sanity/lib/client';
-import styles from './style.module.scss';
 
 interface OurRugsProps { }
 
@@ -50,12 +49,13 @@ export const OurRugs: React.FC<OurRugsProps> = () => {
   }, []);
 
   return (
-    <div className={styles.ourRugs}>
+    <div className='float-left w-full relative my-28 ourRugs'>
+       
       <Subtitle text={ourRugs.title} />
       <AdditionalTitle text={ourRugs.subtitle} />
-      <div className={styles.rugContainer}>
+      <div className='flex flex-wrap'>
         {ourRugs.rugList.map((rug, i) => (
-          <div key={i} className={styles.rugBlock}>
+          <div key={i} className='w-1/4 box-border p-2.5'>
             <Rug key={i} title={rug.title} text={rug.subtitle} imageUrl={rug.imageUrl} />
           </div>
         ))}
