@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './style.module.scss';
 
 interface TitleProps {
   text: string;
@@ -7,6 +6,6 @@ interface TitleProps {
 
 export const Title: React.FC<TitleProps> = ({ text }) => {
   return (
-    <h1 className={styles.title}>{text}</h1>
+    <h1 className="text-white text-7xl font-semibold leading-[80px] tracking-tighter">{text}</h1>
   );
 };

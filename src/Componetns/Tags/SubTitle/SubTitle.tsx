@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './style.module.scss';
 
 interface SubtitleProps {
   text: string;
@@ -7,6 +6,6 @@ interface SubtitleProps {
 
 export const Subtitle: React.FC<SubtitleProps> = ({ text }) => {
   return (
-    <h2 className={styles.subtitle}>{text}</h2>
+    <h2 className="text-white text-5xl font-semibold leading-[72px] tracking-[(-1px)]">{text}</h2>
   );
 };
