@@ -90,7 +90,8 @@ h4 {
   top: 10%;
   display: flex;
   font-size: 22px;
-  left: 125%;
+  left: 62%;
+  width: 0%;
   transform: translate(-50%, -50%);
   height: 5px;
   color: rgba(196, 196, 196, 0.4);
