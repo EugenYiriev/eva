@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './style.module.scss';
 
 interface InfoBlockProps {
   title: string;
@@ -10,8 +9,8 @@ interface InfoBlockProps {
 export const InfoBlock: React.FC<InfoBlockProps> = ({ title, text, className }) => {
   return (
     <>
-      <span className={styles.infoTitle}>{title}</span>
-      <span className={`${styles.infoWeth} ${className}`}>{text}</span>
+      <span className='text-white text-base font-semibold leading-6 ml-4'>{title}</span>
+      <span className={`text-white text-base font-normal leading-6 ml-4 ${className}`}>{text}</span>
     </>
   );
 };

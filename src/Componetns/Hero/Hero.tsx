@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import styles from './style.module.scss';
 import { Title } from '../Tags/Title/Title';
 import { ListItem } from './ListItem/ListItem';
 import { LinkProps } from './LinkProps/LinkProps';
@@ -54,22 +53,21 @@ export const Hero: React.FC = () => {
   const iconUrls = ['/images/Group1.png', '/images/Group2.png'];
 
   return (
-    <div className={styles.hero}>
-      <div className={styles.heroLeft}>
+    <>
+      <div className='mt-40 w-2/4 float-left'>
         {title && (
           <>
             <Title text={title} />
-            <h3 className={styles.subheading}>{subtitle}</h3>
+            <h3 className='mt-10'>{subtitle}</h3> 
 
-            <ListItem items={listItems} listStyle={styles.listStyle} iconUrls={iconUrls} />
+            <ListItem items={listItems} listStyle='mt-12' iconUrls={iconUrls} />
 
-            <div className={styles.buttons}>
+            <div className='flex justify-between mt-11 w-[610px]'>
               {buttons.map((button, index) => (
                 <LinkProps
                   key={index}
                   link={button.buttonLink}
                   title={button.buttonTitle}
-                  className={styles.secondButton}
                 />
               ))}
             </div>
@@ -77,24 +75,24 @@ export const Hero: React.FC = () => {
         )}
       </div>
 
-      <div className={styles.heroRight}>
-        <div className={styles.circlePurper}></div>
-        <div className={styles.circleBlue}></div>
+      <div className='rounded-[36px] float-right mt-36 heroRight'>
+        <div className='circlePurper'></div>
+        <div className='circleBlue'></div>
 
         {imageUrl && <Image src={imageUrl} width={447} height={448} alt="LeftBlockTime" />}
 
-        <div className={styles.blockInfo}>
+        <div className='mt-8 mx-0 mb-28'>
           {imageUrl && (
             <Image
               src={imageUrl}
               width={53}
               height={53}
               alt="LeftBlockTime"
-              className={styles.roundedImage}
+              className='rounded-full float-left'
             />
           )}
 
-          <div className={styles.informLeft}>
+          <div className='flex float-left flex-col'>
             {blockInfo && blockInfo[0] && (
               <InfoBlock
                 title={blockInfo[0].infoBlockTitle}
@@ -103,17 +101,17 @@ export const Hero: React.FC = () => {
             )}
           </div>
 
-          <div className={styles.informRight}>
+          <div className='flex float-right flex-col'>
             {blockInfo && blockInfo[1] && (
               <InfoBlock
                 title={blockInfo[1].infoBlockTitle}
                 text={blockInfo[1].infoBlockSubtitle}
-                className={styles.infoWethCustom}
+                className='text-right infoWethCustom'
               />
             )}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import client from '../../../sanity/lib/client';
-import styles from './style.module.scss';
 import 'tailwindcss/tailwind.css';
 
 interface HeaderData {
@@ -29,11 +28,11 @@ export const Header: React.FC = () => {
   const { siteName, phoneLink, phoneNumber } = headerData || {};
 
   return (
-    <header className={styles.header}>
+    <header className='m=0'>
       {siteName && (
         <>
-          <div className={styles.nameWeb}>{siteName}</div>
-          <div className={styles.phone}>
+          <div className='relative top-11 font-bold text-[32px] leading-[22px] tracking-[1.5px] uppercase bg-clip-text nameWeb'>{siteName}</div>
+          <div className='text-white text-right top-2.5 text-lg font-medium font-sans Roboto'>
             <a href={`tel:${phoneLink}`}>
               <span>{phoneNumber}</span>
             </a>

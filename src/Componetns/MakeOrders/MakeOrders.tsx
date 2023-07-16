@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
 import client from '../../../sanity/lib/client';
-import styles from './style.module.scss';
 import imageUrlBuilder from '@sanity/image-url';
 import { Subtitle } from '../Tags/SubTitle/SubTitle';
 import { AdditionalTitle } from '../Tags/AdditionalTitle/AdditionalTitle';
@@ -42,16 +41,16 @@ export function MakeOrders() {
   }
 
   return (
-    <div className={styles.makeOrder}>
-      <div className={styles.makeOrderTitle}>
+    <div className='w-full float-left mt-40'>
+      <div className='text-center'>
         <Subtitle text={data.title} />
         <AdditionalTitle text={data.subtitle} />
       </div>
 
-      <div className={styles.blockElements}>
-        <div className={styles.elementRow}>
+      <div className='mt-10'>
+        <div className='flex justify-between mb-5 '>
           {data.list.slice(0, 3).map((item, index) => (
-            <div className={styles.element} key={index}>
+            <div className='flex text-center elementPoint' key={index}>
               <ElementOrder
                 title={item.title}
                 imageUrl={urlFor(item.image).url()}
@@ -60,9 +59,9 @@ export function MakeOrders() {
           ))}
         </div>
 
-        <div className={styles.elementRow}>
+        <div className='flex justify-between mb-5 mt-36'>
           {data.list.slice(3, 6).map((item, index) => (
-            <div className={styles.element} key={index}>
+            <div className='flex text-center elementPoint' key={index}>
               <ElementOrder
                 title={item.title}
                 imageUrl={urlFor(item.image).url()}

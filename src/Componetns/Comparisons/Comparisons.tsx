@@ -5,7 +5,6 @@ import { AdditionalTitle } from '../Tags/AdditionalTitle/AdditionalTitle';
 import client from '../../../sanity/lib/client';
 import imageUrlBuilder from '@sanity/image-url';
 import Image from 'next/image';
-import styles from './style.module.scss';
 import { VideoPlayer } from '../VideoPlayer/VideoPlayer';
 import { Comparison } from './Comparison/Comparison';
 
@@ -60,16 +59,17 @@ export const Comparisons: React.FC = () => {
 
   return (
     <>
-      <div className={styles.comparisons}>
+      <div className='float-left'>
         <Subtitle text={title} />
         <AdditionalTitle text={subtitle} />
 
-        <div className={styles.backgroundImg}>
+        <div className='relative'>
           <Image
             src={'/images/group-130.svg'}
             width={500}
             height={370}
             alt=""
+            className='absolute top-0 right-0 translate-y-[16%] translate-x-[115%]'
           />
         </div>
 
@@ -82,7 +82,7 @@ export const Comparisons: React.FC = () => {
           title={item.title}
           image={item.image ? builder.image(item.image).url() : ''}
           items={item.list}
-          customStyle={styles.customStyleliMinus}
+          customStyle='customStyleliMinus'
         />
       ))}
 
@@ -92,7 +92,7 @@ export const Comparisons: React.FC = () => {
           title={item.title}
           image={item.image ? builder.image(item.image).url() : ''}
           items={item.list}
-          customStyle={styles.customStyleLiPlus}
+          customStyle='customStyleLiPlus'
         />
       ))}
     </>

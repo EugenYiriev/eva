@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './style.module.scss';
 
 interface ComparisonProps {
   title: string;
@@ -12,17 +11,17 @@ export const Comparison: React.FC<ComparisonProps> = ({ title, image, items, cus
   const firstWord = title.split(' ')[0]; 
 
   return (
-    <div className={`${styles.comparison} ${customStyle}`}> 
-      <h4 className={styles.title}>
-        <span className={styles.firstWord}>{firstWord}</span>
+    <div className={`' w-1/2 float-left mt-10 ' ${customStyle}`}> 
+      <h4 className='text-white text-lg font-extrabold uppercase leading-normal'>
+        <span>{firstWord}</span>
         {title.substring(firstWord.length)} 
       </h4>
       {image && (
-        <img src={image} alt="Comparison Image" className={styles.image} />
+        <img src={image} alt="Comparison Image" className='my-5 mx-0 rounded-3xl max-w-[475px] max-h-[276px]' />
       )}
-      <ul className={styles.list}>
+      <ul className='list-none text-white text-lg font-medium max-w-[450px]'>
         {items.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index} className='mb-7 ml-9'>{item}</li>
         ))}
       </ul>
     </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './style.module.scss';
 import Image from 'next/image';
 
 interface ListItemProps {
@@ -10,16 +9,16 @@ interface ListItemProps {
 
 export const ListItem: React.FC<ListItemProps> = ({ items, listStyle, iconUrls }) => {
   return (
-    <ul className={`${styles.list} ${listStyle}`}>
+    <ul className={`'m-0' ${listStyle}`}>
       {items.map((item, index) => (
-        <li key={index} className={`${styles.item}`}>
+        <li key={index} className='text-white text-lg list-none mt-8'> 
           {iconUrls[index] && (
             <Image
               src={iconUrls[index]}
               width={35}
               height={35}
               alt="LeftBlockTime"
-              className={styles.iconImage}
+              className='float-left mx-2'
             />
           )}
           {item}

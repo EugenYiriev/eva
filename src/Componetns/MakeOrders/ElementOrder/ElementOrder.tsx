@@ -1,4 +1,3 @@
-import styles from './style.module.scss';
 import Image from 'next/image';
 
 interface ElementOrderProps {
@@ -8,15 +7,15 @@ interface ElementOrderProps {
 
 export const ElementOrder: React.FC<ElementOrderProps> = ({ title, imageUrl }) => {
   return (
-    <div className={styles.elementInfo}>
+    <div className='w-60 h-40 inline-block relative'>
       <Image
         src={imageUrl}
         width={60}
         height={60}
         alt=""
-        className={styles.elementImage}
+        className='my-0 mx-auto'
       />
-      <p className={styles.title}>{title}</p>
+      <p className='text-white text-center text-xl font-medium'>{title}</p>
     </div>
   );
 };

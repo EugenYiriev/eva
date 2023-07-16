@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
 import client from '../../../sanity/lib/client';
-import styles from './style.module.scss';
 import { TitleBlock } from './TitleBlock/TitleBlock';
 import imageUrlBuilder from '@sanity/image-url';
 import Slider from 'react-slick';
@@ -15,7 +14,7 @@ interface MainSliderData {
   imageGallery: string[];
 }
 
-interface MainSliderProps {}
+interface MainSliderProps { }
 
 export const MainSlider: React.FC<MainSliderProps> = () => {
   const [dataMainSlider, setMainSliderData] = useState<MainSliderData | null>(null);
@@ -67,21 +66,21 @@ export const MainSlider: React.FC<MainSliderProps> = () => {
   const { leftTitle, rightTitle } = dataMainSlider;
 
   return (
-    <div className={styles.mainSlider}>
-      <TitleBlock text={leftTitle} listStyle={styles.leftTitle} />
-      <TitleBlock text={rightTitle} listStyle={styles.rightTitle} />
+    <div className='float-left w-full mt-20'>
+      <TitleBlock text={leftTitle} listStyle='float-left text-left' />
+      <TitleBlock text={rightTitle} listStyle='text-right slederRightTitle' />
 
-      <Slider {...sliderSettings} className={styles.slider}>
+      <Slider {...sliderSettings} className='w-full'>
         {imageUrls.map((url, index) => (
           <div key={index} onClick={() => handleImageClick(url)}>
-            <img src={url} alt={`Image ${index + 1}`} className={styles.image} />
+            <img src={url} alt={`Image ${index + 1}`} className='w-full h-auto p-3.5' />
           </div>
         ))}
       </Slider>
 
       {isImageExpanded && (
-        <div className={styles.expandedImageContainer} onClick={handleImageClose}>
-          <img src={expandedImageUrl} alt="Expanded Image" className={styles.expandedImage} />
+        <div onClick={handleImageClose}>
+          <img src={expandedImageUrl} alt="Expanded Image" className='fixed top-0 left-0 w-full h-full object-contain bg-[#000000cc] z-50' />
         </div>
       )}
     </div>
