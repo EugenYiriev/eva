@@ -59,10 +59,13 @@ export const Comparisons: React.FC = () => {
 
   return (
     <>
+    {/* //float-left не нужены */}
       <div className='float-left'>
         <Subtitle text={title} />
         <AdditionalTitle text={subtitle} />
 
+      {/* //Див лишний */}
+      {/* // Более того, вместо image можно использовать ::before для блока */}
         <div className='relative'>
           <Image
             src={'/images/group-130.svg'}

@@ -38,7 +38,10 @@ export const MainSlider: React.FC<MainSliderProps> = () => {
 
   const getImageUrls = async (imageGallery: string[]) => {
     const builder = imageUrlBuilder(client);
-
+  //Выглядит так будто тут не нужен async await, так как builder.image(image).url() работает синхронно
+  //В таком случае нет смысла отдельно сохранять setImageUrls(urls), а они должны быть частью sliderData.
+  //Например setMainSliderData({ ...response[0], imageGalery: getImageUrls(response[0]) })
+  //И так во всех компонентах
     const urls = await Promise.all(
       imageGallery.map(async (image) => {
         const imageUrl = await builder.image(image).url();

@@ -12,6 +12,7 @@ export const ElementOrder: React.FC<ElementOrderProps> = ({ title, imageUrl }) =
         src={imageUrl}
         width={60}
         height={60}
+        //Лучше всегда указывать alt
         alt=""
         className='my-0 mx-auto'
       />

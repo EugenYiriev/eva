@@ -14,7 +14,9 @@ export const Rug: React.FC<RugProps> = ({ title, text, imageUrl }) => {
         src={imageUrl}
         width={150}
         height={138}
+        //Лучше всегда указывать alt
         alt=""
+        //Непонятный класс customBoxShadow
         className='rounded-3xl bg-[#ffffff05] p-11 customBoxShadow'
       />
       <h4 className='text-white text-xl font-bold leading-6 uppercase mt-5 w-3/4'>{title}</h4>

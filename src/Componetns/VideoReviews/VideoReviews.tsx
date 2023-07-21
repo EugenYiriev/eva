@@ -40,6 +40,7 @@ export const VideoReviews: React.FC<VideoReviewsProps> = () => {
         {videoReviews.videos.map((video, index) => {
           const imageUrl = video.backgroundImage ? builder.image(video.backgroundImage).url() : '';
           return (
+            //Лишний див, классы можно добавить в VideoPlayer
             <div key={index} className='flex-[0_0_45%] mx-4 my-0'>
               <VideoPlayer videoId={video.videoLink} posterImageUrl={imageUrl} width={606} height={332} />
             </div>

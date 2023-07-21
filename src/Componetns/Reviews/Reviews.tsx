@@ -34,6 +34,7 @@ export const Reviews: React.FC<ReviewsProps> = () => {
     fetchData();
   }, []);
 
+  //Уже писал про async await в другом файле
   const getImageUrls = async (imageGallery: string[]) => {
     const builder = imageUrlBuilder(client);
 

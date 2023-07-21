@@ -24,12 +24,16 @@ export const VideoPlayer = ({ videoId, posterImageUrl, width, height }: VideoPla
           height={height}
           allowFullScreen
           title="YouTube Video"
-        ></iframe>
+        />
 
       ) : (
         <button onClick={handlePlay} className='rounded-3xl' style={{ height }}>
           <Image src={posterImageUrl} width={width} height={height} alt="Video Poster" />
           {/* WTF: why is the img not center?  */}
+          {/* //Все совершенно логично, левый верхний угол картинки находится как-раз-таки в центре */}
+          {/* А чтобы это работало как задумно, нужно добавить transform: translate(-50%, -50%) */}
+          {/* Или же можно использовать flexbox */}
+          {/* А вообще span с background-image - это не очень хорошая идея, лучше использовать img */}
           <span className="absolute top-1/2 left-1/2 w-14 h-14 cursor-pointer bg-[url('/images/play-but.svg')] bg-no-repeat"></span>
         </button>
       )}

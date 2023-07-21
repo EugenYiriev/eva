@@ -25,7 +25,9 @@ export const OurRugs: React.FC<OurRugsProps> = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await client.fetch(`*[_type == "ourRugs"][0]{
+        //Так вместо any возвращается тип OurRugsState
+        //Так лучше сделать во всех компонентах
+        const response = await client.fetch<OurRugsState>(`*[_type == "ourRugs"][0]{
           title,
           subtitle,
           "rugList": list[]{
@@ -35,11 +37,9 @@ export const OurRugs: React.FC<OurRugsProps> = () => {
           }
         }`);
 
-        setOurRugs({
-          title: response.title,
-          subtitle: response.subtitle,
-          rugList: response.rugList
-        });
+        //Не нужно отдельно сохранять в стейт каждое поле
+        //Так лучше:
+        setOurRugs(response);
       } catch (error) {
         console.error('Error fetching data from Sanity:', error);
       }
@@ -49,8 +49,8 @@ export const OurRugs: React.FC<OurRugsProps> = () => {
   }, []);
 
   return (
+    //Непонятный класс ourRugs
     <div className='float-left w-full relative my-28 ourRugs'>
-       
       <Subtitle text={ourRugs.title} />
       <AdditionalTitle text={ourRugs.subtitle} />
       <div className='flex flex-wrap'>

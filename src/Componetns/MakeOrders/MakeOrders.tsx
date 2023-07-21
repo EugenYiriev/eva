@@ -42,14 +42,19 @@ export function MakeOrders() {
 
   return (
     <div className='w-full float-left mt-40'>
+      {/* //Лишний див. Более правильно добавлять классы непосредственно в компоненты Subtitle и AdditionalTitle */}
+      {/* // Для этого они должны иметь возможность принимать className */}
       <div className='text-center'>
         <Subtitle text={data.title} />
         <AdditionalTitle text={data.subtitle} />
       </div>
 
+    {/* //Лишние дивы и лишнее разделение на два блока */}
+    {/* //Все элементы можно отрендерить в одном блоке */}
       <div className='mt-10'>
         <div className='flex justify-between mb-5 '>
           {data.list.slice(0, 3).map((item, index) => (
+            //Непонятный класс elementPoint
             <div className='flex text-center elementPoint' key={index}>
               <ElementOrder
                 title={item.title}
@@ -61,6 +66,7 @@ export function MakeOrders() {
 
         <div className='flex justify-between mb-5 mt-36'>
           {data.list.slice(3, 6).map((item, index) => (
+            //Непонятный класс elementPoint
             <div className='flex text-center elementPoint' key={index}>
               <ElementOrder
                 title={item.title}
