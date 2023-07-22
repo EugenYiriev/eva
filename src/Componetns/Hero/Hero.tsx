@@ -57,7 +57,7 @@ export const Hero: React.FC = () => {
       <div className='mt-40 w-2/4 float-left'>
         {title && (
           <>
-            <Title text={title} />
+            <Title>{title}</Title>
             <h3 className='mt-10'>{subtitle}</h3> 
 
             <ListItem items={listItems} listStyle='mt-12' iconUrls={iconUrls} />

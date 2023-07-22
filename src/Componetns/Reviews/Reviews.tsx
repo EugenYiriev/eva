@@ -34,16 +34,13 @@ export const Reviews: React.FC<ReviewsProps> = () => {
     fetchData();
   }, []);
 
-  //Уже писал про async await в другом файле
-  const getImageUrls = async (imageGallery: string[]) => {
+  const getImageUrls = (imageGallery: string[]) => {
     const builder = imageUrlBuilder(client);
 
-    const urls = await Promise.all(
-      imageGallery.map(async (image) => {
-        const imageUrl = await builder.image(image).url();
-        return imageUrl;
-      })
-    );
+    const urls = imageGallery.map((image) => {
+      const imageUrl = builder.image(image).url();
+      return imageUrl;
+    });
 
     setImageUrls(urls);
   };
@@ -60,7 +57,7 @@ export const Reviews: React.FC<ReviewsProps> = () => {
 
   return (
     <div className='float-left mt-28 w-full'>
-      <Subtitle text={title} />
+      <Subtitle>{title}</Subtitle>
       <Slider {...sliderSettings} className='w-full mt-10'>
         {imageUrls.map((url, index) => (
           <div key={index}>

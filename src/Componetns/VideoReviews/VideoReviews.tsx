@@ -35,18 +35,23 @@ export const VideoReviews: React.FC<VideoReviewsProps> = () => {
 
   return (
     <div className='float-left mt-28 w-full'>
-      <Subtitle text={videoReviews.title} />
+      <Subtitle>{videoReviews.title}</Subtitle>
       <div className='flex justify-between flex-wrap'>
         {videoReviews.videos.map((video, index) => {
           const imageUrl = video.backgroundImage ? builder.image(video.backgroundImage).url() : '';
           return (
-            //Лишний див, классы можно добавить в VideoPlayer
-            <div key={index} className='flex-[0_0_45%] mx-4 my-0'>
-              <VideoPlayer videoId={video.videoLink} posterImageUrl={imageUrl} width={606} height={332} />
-            </div>
+            <VideoPlayer
+              key={index} 
+              videoId={video.videoLink}
+              posterImageUrl={imageUrl}
+              width={606}
+              height={332}
+              className='flex-[0_0_45%] mx-4 my-0'
+            />
           );
         })}
       </div>
+
     </div>
   );
 };

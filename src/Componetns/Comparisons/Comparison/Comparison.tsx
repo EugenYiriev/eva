@@ -1,22 +1,22 @@
 import React from 'react';
+import classNames from 'classnames';
 
 interface ComparisonProps {
   title: string;
   image: string;
   items: string[];
-  //customsStyle - это не очень хорошее название для пропа. Лучше называть его className, тогда будет понятно, что это класс, который будет добавлен к компоненту
-  customStyle: string;
+  className: string;
 }
 
-export const Comparison: React.FC<ComparisonProps> = ({ title, image, items, customStyle }) => {
-  const firstWord = title.split(' ')[0]; 
+export const Comparison: React.FC<ComparisonProps> = ({ title, image, items, className }) => {
 
+  const firstWord = title.split(' ')[0];
+  
   return (
-    //Для того чтобы объединить два класса в один используй библиотеку classnames
-    <div className={`'w-1/2 float-left mt-10 ' ${customStyle}`}> 
+    <div className={classNames('w-1/2 float-left mt-10', className)}>
       <h4 className='text-white text-lg font-extrabold uppercase leading-normal'>
         <span>{firstWord}</span>
-        {title.substring(firstWord.length)} 
+        {title.substring(firstWord.length)}
       </h4>
       {image && (
         <img src={image} alt="Comparison Image" className='my-5 mx-0 rounded-3xl max-w-[475px] max-h-[276px]' />

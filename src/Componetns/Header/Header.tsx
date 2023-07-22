@@ -30,20 +30,12 @@ export const Header: React.FC = () => {
   return (
     <header className='m=0'>
       {siteName && (
-        <>
-        {/* Вместо двух дивов можно использовать один и flex. +  у тебя первый див почему-то ниже чем второй */}
-        {/* //Что такое nameWeb? Не понятно */}
-          <div className='relative top-11 font-bold text-[32px] leading-[22px] tracking-[1.5px] uppercase bg-clip-text nameWeb'>{siteName}</div>
-          {/* //Зачем тут font-sans? У тебя везде он одинаковый */}
-          {/* //Зачем тут Roboto? Так это не работает */}
-          <div className='text-white text-right top-2.5 text-lg font-medium font-sans Roboto'>
-            <a href={`tel:${phoneLink}`}>
-              {/* //span лишний */}
-              <span>{phoneNumber}</span>
-            </a>
-          </div>
-        </>
-      )}
-    </header>
+        <div className='relative flex justify-between items-center top-11 font-bold text-[32px] leading-[22px] tracking-[1.5px]'>
+          <h2 className='uppercase bg-clip-text headerMainTitle text-left'>{siteName}</h2>
+          <a className='text-white text-right text-lg font-medium' href={`tel:${phoneLink}`}> {phoneNumber} </a>
+        </div>
+      )
+      }
+    </header >
   );
 };

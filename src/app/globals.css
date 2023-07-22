@@ -57,21 +57,21 @@ h4 {
 
 /* Header */
 
-.nameWeb {
+.headerMainTitle {
   background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
   -webkit-text-fill-color: transparent;
 }
 
 /* OurRugs */
 
-.customBoxShadow {
+.customBorderIcon {
   box-shadow: -2.009999990463257px 2.009999990463257px 3.013333320617676px 0px rgba(255, 255, 255, 0.39) inset, 2.009999990463257px -2.009999990463257px 20px 0px rgba(214, 214, 214, 0.17) inset;
   border-radius: 3xl;
   background: #ffffff05;
   padding: 11px;
 }
 
-.ourRugs::before {
+.ourRugsBackgroundColor::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -83,7 +83,9 @@ h4 {
   height: 58px;
 }
 
-.elementPoint:nth-child(-n+2)::before {
+.dottedLineBefore:nth-child(-n+2)::before,
+.dottedLineBefore:nth-child(4)::before,
+.dottedLineBefore:nth-child(5)::before {
   content: ". . . . . . . . . . . . . . . . .";
   white-space: nowrap;
   position: relative;
@@ -115,7 +117,7 @@ h4 {
 /* Hero */
 
 .heroRight {
-  padding: 24px 28px 30px 28px;
+  padding: 24px 28px 14px 28px;
   background: linear-gradient(139deg, rgba(58, 129, 191, 0.08) 0%, rgba(65, 48, 90, 0.08) 100%);
   backdrop-filter: blur(555px);
   border: 1px solid #9B51E0;
@@ -164,6 +166,20 @@ h4 {
 }
 
 /* Comparisons */
+
+.comparisonBackgroundImgBefore::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 620px;
+  height: 450px;
+  background-image: url(/images/group-130.svg);
+  background-size: cover;
+  background-position: top right;
+  transform: translateY(0%) translateX(109%);
+}
 
 .customStyleLiPlus span {
   background: linear-gradient(103.91deg, #9b51e0 19.72%, rgba(48, 129, 237, 0.8));

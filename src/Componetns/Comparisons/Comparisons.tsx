@@ -59,43 +59,18 @@ export const Comparisons: React.FC = () => {
 
   return (
     <>
-    {/* //float-left не нужены */}
-      <div className='float-left'>
-        <Subtitle text={title} />
-        <AdditionalTitle text={subtitle} />
+      <Subtitle>{title}</Subtitle>
+      <AdditionalTitle>{subtitle}</AdditionalTitle>
 
-      {/* //Див лишний */}
-      {/* // Более того, вместо image можно использовать ::before для блока */}
-        <div className='relative'>
-          <Image
-            src={'/images/group-130.svg'}
-            width={500}
-            height={370}
-            alt=""
-            className='absolute top-0 right-0 translate-y-[16%] translate-x-[115%]'
-          />
-        </div>
+      <VideoPlayer videoId={videoLink} posterImageUrl={imageUrl} width={811} height={451} className='comparisonBackgroundImgBefore'/>
 
-        <VideoPlayer videoId={videoLink} posterImageUrl={imageUrl} width={811} height={451} /> 
-      </div>
-
-      {listMinus.map((item, index) => (
+      {[...listMinus.map(item => ({ ...item, type: 'minus' })), ...listPlus.map(item => ({ ...item, type: 'plus' }))].map((item, index) => (
         <Comparison
           key={index}
           title={item.title}
           image={item.image ? builder.image(item.image).url() : ''}
           items={item.list}
-          customStyle='customStyleliMinus'
-        />
-      ))}
-
-      {listPlus.map((item, index) => (
-        <Comparison
-          key={index}
-          title={item.title}
-          image={item.image ? builder.image(item.image).url() : ''}
-          items={item.list}
-          customStyle='customStyleLiPlus'
+          className={item.type === 'minus' ? 'customStyleliMinus' : 'customStyleLiPlus'}
         />
       ))}
     </>

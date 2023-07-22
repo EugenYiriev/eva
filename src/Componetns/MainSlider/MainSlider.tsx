@@ -1,24 +1,24 @@
 "use client";
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import client from '../../../sanity/lib/client';
-import { TitleBlock } from './TitleBlock/TitleBlock';
 import imageUrlBuilder from '@sanity/image-url';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { sliderSettings } from './sliderSettings';
+import { Subtitle } from '../Tags/SubTitle/SubTitle';
 
 interface MainSliderData {
   leftTitle: string;
   rightTitle: string;
   imageGallery: string[];
+  imageUrls: string[];
 }
 
 interface MainSliderProps { }
 
 export const MainSlider: React.FC<MainSliderProps> = () => {
   const [dataMainSlider, setMainSliderData] = useState<MainSliderData | null>(null);
-  const [imageUrls, setImageUrls] = useState<string[]>([]);
   const [isImageExpanded, setIsImageExpanded] = useState<boolean>(false);
   const [expandedImageUrl, setExpandedImageUrl] = useState<string>('');
 
@@ -26,8 +26,9 @@ export const MainSlider: React.FC<MainSliderProps> = () => {
     const fetchData = async () => {
       try {
         const response: MainSliderData[] = await client.fetch('*[_type == "mainSlider"]');
-        setMainSliderData(response[0]);
-        getImageUrls(response[0].imageGallery);
+        const mainSliderData = response[0];
+        const imageUrls = await getImageUrls(mainSliderData.imageGallery);
+        setMainSliderData({ ...mainSliderData, imageUrls });
       } catch (error) {
         console.error('Error:', error);
       }
@@ -38,10 +39,6 @@ export const MainSlider: React.FC<MainSliderProps> = () => {
 
   const getImageUrls = async (imageGallery: string[]) => {
     const builder = imageUrlBuilder(client);
-  //Выглядит так будто тут не нужен async await, так как builder.image(image).url() работает синхронно
-  //В таком случае нет смысла отдельно сохранять setImageUrls(urls), а они должны быть частью sliderData.
-  //Например setMainSliderData({ ...response[0], imageGalery: getImageUrls(response[0]) })
-  //И так во всех компонентах
     const urls = await Promise.all(
       imageGallery.map(async (image) => {
         const imageUrl = await builder.image(image).url();
@@ -49,7 +46,7 @@ export const MainSlider: React.FC<MainSliderProps> = () => {
       })
     );
 
-    setImageUrls(urls);
+    return urls;
   };
 
   const handleImageClick = (url: string) => {
@@ -66,12 +63,12 @@ export const MainSlider: React.FC<MainSliderProps> = () => {
     return null;
   }
 
-  const { leftTitle, rightTitle } = dataMainSlider;
+  const { leftTitle, rightTitle, imageUrls } = dataMainSlider;
 
   return (
     <div className='float-left w-full mt-20'>
-      <TitleBlock text={leftTitle} listStyle='float-left text-left' />
-      <TitleBlock text={rightTitle} listStyle='text-right slederRightTitle' />
+      <Subtitle>{leftTitle}</Subtitle>
+      <h3 className='text-white text-3xl font-medium text-right slederRightTitle'>{rightTitle}</h3>
 
       <Slider {...sliderSettings} className='w-full'>
         {imageUrls.map((url, index) => (

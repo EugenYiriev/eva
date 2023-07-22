@@ -1,11 +1,13 @@
 import React from 'react';
+import classNames from 'classnames';
 
 interface AdditionalTitleProps {
-  text: string;
+  children: React.ReactNode;
+  className?: string;
 }
-//Смотри комментарии в Subtitle.tsx
-export const AdditionalTitle: React.FC<AdditionalTitleProps> = ({ text }) => {
+
+export const AdditionalTitle: React.FC<AdditionalTitleProps> = ({ children, className }) => {
   return (
-    <h3 className="text-gray-200 text-xl font-normal leading-8 tracking-wider">{text}</h3>
+    <h3 className={classNames('text-gray-200 text-xl font-normal leading-8 tracking-wider', className)}>{children} </h3>
   );
 };

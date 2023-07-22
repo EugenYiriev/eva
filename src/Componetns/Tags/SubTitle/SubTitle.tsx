@@ -1,16 +1,14 @@
 import React from 'react';
+import classNames from 'classnames';
 
 interface SubtitleProps {
-  text: string;
+  children: React.ReactNode;
+  className?: string;
+
 }
 
-export const Subtitle: React.FC<SubtitleProps> = ({ text }) => {
+export const Subtitle: React.FC<SubtitleProps> = ({ children, className }) => {
   return (
-    //В таких компонентах лучше использовать не кастомнй проп text, а children. Так в коде это будет более натурально выглядеть при использовании
-    //Например
-    // <Subtitle>Some text</Subtitle>
-    //Вместо
-    // <Subtitle text="Some text" />
-    <h2 className="text-white text-5xl font-semibold leading-[72px] tracking-[(-1px)]">{text}</h2>
+    <h2 className={classNames('text-white text-5xl font-semibold leading-[72px] tracking-[(-1px)]', className)}>{children} </h2>
   );
 };

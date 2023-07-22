@@ -1,13 +1,12 @@
 import React from 'react';
 
 interface TitleProps {
-  text: string;
+  children: React.ReactNode;
 }
 
-// Все тоже самое, что и в Subtitle.tsx
-export const Title: React.FC<TitleProps> = ({ text }) => {
+export const Title: React.FC<TitleProps> = ({ children }) => {
   return (
-    <h1 className="text-white text-7xl font-semibold leading-[80px] tracking-tighter">{text}</h1>
+    <h1 className="text-white text-7xl font-semibold leading-[80px] tracking-tighter">{children}</h1>
   );
 };
  
