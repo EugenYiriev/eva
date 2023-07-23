@@ -1,0 +1,42 @@
+
+.comparisonBackgroundImgBefore::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 620px;
+    height: 450px;
+    background-image: url(/images/group-130.svg);
+    background-size: cover;
+    background-position: top right;
+    transform: translateY(0%) translateX(109%);
+  }
+  
+  .productListItem__plus span {
+    background: linear-gradient(103.91deg, #9b51e0 19.72%, rgba(48, 129, 237, 0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .productListItem__minus li::before {
+    content: "";
+    position: absolute;
+    background-image: url(/images/check-mark-button.svg);
+    background-size: 28px;
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 28px;
+    margin-left: -34px;
+  }
+  
+  .productListItem__plus li::before {
+    content: "";
+    position: absolute;
+    background-image: url(/images/check-mark-button-plus.svg);
+    background-size: 28px;
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 28px;
+    margin-left: -34px;
+  }

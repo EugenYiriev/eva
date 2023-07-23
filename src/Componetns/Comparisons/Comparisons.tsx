@@ -7,6 +7,7 @@ import imageUrlBuilder from '@sanity/image-url';
 import Image from 'next/image';
 import { VideoPlayer } from '../VideoPlayer/VideoPlayer';
 import { Comparison } from './Comparison/Comparison';
+import styles from './style.module.css'
 
 interface ComparisonItem {
   title: string;
@@ -62,7 +63,7 @@ export const Comparisons: React.FC = () => {
       <Subtitle>{title}</Subtitle>
       <AdditionalTitle>{subtitle}</AdditionalTitle>
 
-      <VideoPlayer videoId={videoLink} posterImageUrl={imageUrl} width={811} height={451} className='comparisonBackgroundImgBefore'/>
+      <VideoPlayer videoId={videoLink} posterImageUrl={imageUrl} width={811} height={451} className={styles.comparisonBackgroundImgBefore}/>
 
       {[...listMinus.map(item => ({ ...item, type: 'minus' })), ...listPlus.map(item => ({ ...item, type: 'plus' }))].map((item, index) => (
         <Comparison
@@ -70,7 +71,7 @@ export const Comparisons: React.FC = () => {
           title={item.title}
           image={item.image ? builder.image(item.image).url() : ''}
           items={item.list}
-          className={item.type === 'minus' ? 'customStyleliMinus' : 'customStyleLiPlus'}
+          className={item.type === 'minus' ? styles.productListItem__minus : styles.productListItem__plus}
         />
       ))}
     </>

@@ -1,0 +1,35 @@
+
+.customBorderIcon {
+    box-shadow: -2.009999990463257px 2.009999990463257px 3.013333320617676px 0px rgba(255, 255, 255, 0.39) inset, 2.009999990463257px -2.009999990463257px 20px 0px rgba(214, 214, 214, 0.17) inset;
+    border-radius: 3xl;
+    background: #ffffff05;
+  }
+  
+  .ourRugsBackgroundColor::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-radius: 10px;
+    background: var(--linear-purple-blue-style, linear-gradient(126deg, #9B51E0 0%, #3081ED 100%));
+    filter: blur(100px);
+    width: 1292px;
+    height: 58px;
+  }
+  
+  .dottedLineBefore:nth-child(-n+2)::before,
+  .dottedLineBefore:nth-child(4)::before,
+  .dottedLineBefore:nth-child(5)::before {
+    content: ". . . . . . . . . . . . . . . . .";
+    white-space: nowrap;
+    position: relative;
+    top: 10%;
+    display: flex;
+    font-size: 22px;
+    left: 62%;
+    width: 0%;
+    transform: translate(-50%, -50%);
+    height: 5px;
+    color: rgba(196, 196, 196, 0.4);
+    border-radius: 50%;
+  }

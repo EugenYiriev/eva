@@ -5,6 +5,8 @@ import imageUrlBuilder from '@sanity/image-url';
 import { Subtitle } from '../Tags/SubTitle/SubTitle';
 import { AdditionalTitle } from '../Tags/AdditionalTitle/AdditionalTitle';
 import { ElementOrder } from './ElementOrder/ElementOrder';
+import styles from './style.module.css';
+import classNames from 'classnames';
 
 interface MakeOrdersData {
   title: string;
@@ -47,11 +49,10 @@ export function MakeOrders() {
       <div className='mt-10'>
         <div className='flex justify-between mb-5 flex-wrap'>
           {data.list.slice(0, 6).map((item, index) => (
-            <div className='flex text-center dottedLineBefore mt-10' key={index}>
+            <div className={classNames('flex text-center mt-10' , styles.dottedLineBefore)} key={index}>
               <ElementOrder
                 title={item.title}
-                imageUrl={urlFor(item.image).url()}
-              />
+                imageUrl={urlFor(item.image).url()}/>
             </div>
           ))}
         </div>

@@ -7,6 +7,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { sliderSettings } from './sliderSettings';
 import { Subtitle } from '../Tags/SubTitle/SubTitle';
+import styles from './style.module.css';
+import classNames from 'classnames';
 
 interface MainSliderData {
   leftTitle: string;
@@ -23,25 +25,34 @@ export const MainSlider: React.FC<MainSliderProps> = () => {
   const [expandedImageUrl, setExpandedImageUrl] = useState<string>('');
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response: MainSliderData[] = await client.fetch('*[_type == "mainSlider"]');
-        const mainSliderData = response[0];
-        const imageUrls = await getImageUrls(mainSliderData.imageGallery);
-        setMainSliderData({ ...mainSliderData, imageUrls });
-      } catch (error) {
-        console.error('Error:', error);
-      }
+    let mainSliderData: MainSliderData | undefined;
+
+    const fetchData = () => {
+      client
+        .fetch('*[_type == "mainSlider"]')
+        .then((response: MainSliderData[]) => {
+          mainSliderData = response[0];
+          return getImageUrls(mainSliderData.imageGallery);
+        })
+        .then((imageUrls) => {
+          if (mainSliderData) {
+            const mainSliderDataWithUrls = { ...mainSliderData, imageUrls };
+            setMainSliderData(mainSliderDataWithUrls);
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
     };
 
     fetchData();
   }, []);
 
-  const getImageUrls = async (imageGallery: string[]) => {
+  const getImageUrls = (imageGallery: string[]) => {
     const builder = imageUrlBuilder(client);
-    const urls = await Promise.all(
-      imageGallery.map(async (image) => {
-        const imageUrl = await builder.image(image).url();
+    const urls = Promise.all(
+      imageGallery.map((image) => {
+        const imageUrl = builder.image(image).url();
         return imageUrl;
       })
     );
@@ -67,8 +78,13 @@ export const MainSlider: React.FC<MainSliderProps> = () => {
 
   return (
     <div className='float-left w-full mt-20'>
-      <Subtitle>{leftTitle}</Subtitle>
-      <h3 className='text-white text-3xl font-medium text-right slederRightTitle'>{rightTitle}</h3>
+      <div className='flex justify-between mb-9'>
+        <h3 className='text-white text-3xl font-medium text-left'>{leftTitle}</h3>
+        <h3 className={classNames('text-white text-3xl font-medium text-right', styles.subheadingArrow)}>{rightTitle}</h3>
+      </div>
+
+
+
 
       <Slider {...sliderSettings} className='w-full'>
         {imageUrls.map((url, index) => (

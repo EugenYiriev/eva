@@ -7,6 +7,9 @@ import { LinkProps } from './LinkProps/LinkProps';
 import { InfoBlock } from './InfoBlock/InfoBlock';
 import imageUrlBuilder from '@sanity/image-url';
 import client from '../../../sanity/lib/client';
+import styles from './style.module.css';
+import classNames from 'classnames';
+
 
 interface HeroData {
   title: string;
@@ -75,9 +78,9 @@ export const Hero: React.FC = () => {
         )}
       </div>
 
-      <div className='rounded-[36px] float-right mt-36 heroRight'>
-        <div className='circlePurper'></div>
-        <div className='circleBlue'></div>
+      <div className={classNames('rounded-[36px] float-right mt-36 ', styles.heroRight)}>
+        <div className={styles.circlePurper}></div>
+        <div className={styles.circleBlue}></div>
 
         {imageUrl && <Image src={imageUrl} width={447} height={448} alt="LeftBlockTime" />}
 
@@ -106,7 +109,7 @@ export const Hero: React.FC = () => {
               <InfoBlock
                 title={blockInfo[1].infoBlockTitle}
                 text={blockInfo[1].infoBlockSubtitle}
-                className='text-right infoWethCustom'
+                className={classNames('text-right ', styles.infoWethCustom)}
               />
             )}
           </div>

@@ -1,0 +1,16 @@
+.dottedLineBefore:nth-child(-n+2)::before,
+.dottedLineBefore:nth-child(4)::before,
+.dottedLineBefore:nth-child(5)::before {
+  content: ". . . . . . . . . . . . . . . . .";
+  white-space: nowrap;
+  position: relative;
+  top: 10%;
+  display: flex;
+  font-size: 22px;
+  left: 62%;
+  width: 0%;
+  transform: translate(-50%, -50%);
+  height: 5px;
+  color: rgba(196, 196, 196, 0.4);
+  border-radius: 50%;
+}

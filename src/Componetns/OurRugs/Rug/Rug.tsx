@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import classNames from 'classnames';
+import styles from '../style.module.css';
 
 interface RugProps {
   title: string;
@@ -15,7 +17,7 @@ export const Rug: React.FC<RugProps> = ({ title, text, imageUrl }) => {
         width={150}
         height={138}
         alt="icon"
-        className='rounded-3xl bg-[#ffffff05] p-11 customBorderIcon'
+        className={classNames('rounded-3xl bg-[#ffffff05] p-11', styles.customBorderIcon)}
       />
       <h4 className='text-white text-xl font-bold leading-6 uppercase mt-5 w-3/4'>{title}</h4>
       <p className='text-white text-base font-normal leading-5 mt-2.5 w-3/4'>{text}</p>

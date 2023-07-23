@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import client from '../../../sanity/lib/client';
 import 'tailwindcss/tailwind.css';
+import styles from './style.module.css';
+import classNames from 'classnames';
 
 interface HeaderData {
   siteName: string;
@@ -31,7 +33,7 @@ export const Header: React.FC = () => {
     <header className='m=0'>
       {siteName && (
         <div className='relative flex justify-between items-center top-11 font-bold text-[32px] leading-[22px] tracking-[1.5px]'>
-          <h2 className='uppercase bg-clip-text headerMainTitle text-left'>{siteName}</h2>
+          <h2 className={classNames('uppercase bg-clip-text text-left', styles.siteTitle)}>{siteName}</h2>
           <a className='text-white text-right text-lg font-medium' href={`tel:${phoneLink}`}> {phoneNumber} </a>
         </div>
       )
