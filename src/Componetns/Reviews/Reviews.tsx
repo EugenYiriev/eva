@@ -38,8 +38,7 @@ export const Reviews: React.FC<ReviewsProps> = () => {
     const builder = imageUrlBuilder(client);
 
     const urls = imageGallery.map((image) => {
-      const imageUrl = builder.image(image).url();
-      return imageUrl;
+      return builder.image(image).url();
     });
 
     setImageUrls(urls);
