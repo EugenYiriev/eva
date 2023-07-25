@@ -4,7 +4,7 @@ import { Subtitle } from '../Tags/SubTitle/SubTitle';
 import { AdditionalTitle } from '../Tags/AdditionalTitle/AdditionalTitle';
 import { Rug } from './Rug/Rug';
 import client from '../../../sanity/lib/client';
-import styles from './style.module.css';
+import styles from './style.module.scss';
 import classNames from 'classnames';
 
 interface OurRugsProps { }

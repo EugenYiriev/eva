@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import client from '../../../sanity/lib/client';
 import 'tailwindcss/tailwind.css';
-import styles from './style.module.css';
+import styles from './style.module.scss';
 import classNames from 'classnames';
 
 interface HeaderData {

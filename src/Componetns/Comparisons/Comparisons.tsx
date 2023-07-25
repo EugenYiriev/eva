@@ -7,7 +7,7 @@ import imageUrlBuilder from '@sanity/image-url';
 import Image from 'next/image';
 import { VideoPlayer } from '../VideoPlayer/VideoPlayer';
 import { Comparison } from './Comparison/Comparison';
-import styles from './style.module.css'
+import styles from './style.module.scss'
 
 interface ComparisonItem {
   title: string;

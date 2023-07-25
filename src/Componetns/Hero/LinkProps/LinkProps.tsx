@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from '../style.module.css';
+import styles from '../style.module.scss';
 
 interface LinkProps {
   link: string;

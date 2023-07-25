@@ -5,7 +5,7 @@ import imageUrlBuilder from '@sanity/image-url';
 import { Subtitle } from '../Tags/SubTitle/SubTitle';
 import { AdditionalTitle } from '../Tags/AdditionalTitle/AdditionalTitle';
 import { ElementOrder } from './ElementOrder/ElementOrder';
-import styles from './style.module.css';
+import styles from './style.module.scss';
 import classNames from 'classnames';
 
 interface MakeOrdersData {

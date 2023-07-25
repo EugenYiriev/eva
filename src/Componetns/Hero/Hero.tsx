@@ -7,7 +7,7 @@ import { LinkProps } from './LinkProps/LinkProps';
 import { InfoBlock } from './InfoBlock/InfoBlock';
 import imageUrlBuilder from '@sanity/image-url';
 import client from '../../../sanity/lib/client';
-import styles from './style.module.css';
+import styles from './style.module.scss';
 import classNames from 'classnames';
 
 

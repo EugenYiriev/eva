@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import classNames from 'classnames';
-import styles from '../style.module.css';
+import styles from '../style.module.scss';
 
 interface RugProps {
   title: string;

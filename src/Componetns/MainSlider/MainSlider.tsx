@@ -6,8 +6,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { sliderSettings } from './sliderSettings';
-import { Subtitle } from '../Tags/SubTitle/SubTitle';
-import styles from './style.module.css';
+import styles from './style.module.scss';
 import classNames from 'classnames';
 
 interface MainSliderData {
